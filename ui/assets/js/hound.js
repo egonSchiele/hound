@@ -463,7 +463,7 @@ var SearchBar = React.createClass({
           <div id="adv" ref="adv">
             <span className="octicon octicon-chevron-up hide-adv" onClick={this.hideAdvanced}></span>
             <div className="field">
-              <label htmlFor="files">File Path</label>
+              <label>File Path</label>
               <div className="field-input">
                 <input type="text"
                     id="files"
@@ -474,13 +474,13 @@ var SearchBar = React.createClass({
               </div>
             </div>
             <div className="field">
-              <label htmlFor="ignore-case">Ignore Case</label>
+              <label>Ignore Case</label>
               <div className="field-input">
-                <input id="ignore-case" type="checkbox" ref="icase" />
+                <input type="checkbox" ref="icase" />
               </div>
             </div>
             <div className="field">
-              <label className="multiselect_label" htmlFor="repos">Select Repo</label>
+              <label className="multiselect_label">Select Repo</label>
               <div className="field-input">
                 <select id="repos" className="form-control multiselect" multiple={true} size={Math.min(16, repoCount)} ref="repos">
                   {repoOptions}
@@ -648,6 +648,7 @@ var FilesView = React.createClass({
             <a href={Model.UrlToRepo(repo, match.Filename, null, rev)}>
               {match.Filename}
             </a>
+            <span className="matches-count">{match.Matches.length} matches</span>
           </div>
           <div className="file-body">
             {matches}
@@ -713,6 +714,7 @@ var ResultView = React.createClass({
           <div className="title">
             <span className="mega-octicon octicon-repo"></span>
             <span className="name">{Model.NameForRepo(result.Repo)}</span>
+            <span className="matches-count">{result.FilesWithMatch} files</span>
           </div>
           <FilesView matches={result.Matches}
               rev={result.Rev}
